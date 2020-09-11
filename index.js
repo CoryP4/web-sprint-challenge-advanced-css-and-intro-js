@@ -247,13 +247,14 @@ getArtistByIndex(artists, 0)
 
 function get20s(arr) {
   const namesOfArtists = [] 
-  for (let i = 0; i < array.length; i++) {
-    if (arr[i].years >= 1900) {
-      console
+  for (let i = 0; i < arr.length; i++) {
+    if (arr[i].years.split( '-' )[0] >= 1900) {
+      namesOfArtists.push(arr[i].name)
     }
 
   }
-  /* Code here */
+  
+  return namesOfArtists
 
 }
 
@@ -269,11 +270,12 @@ get20s(artists)
  * 
  * Note that sucessfully invoking this function multiple times without refreshing your browser will continuously remove artists from the array until there are none left. If you refresh your browser, the data will reset.  
 */
-function removeArtist(/*code here*/) {
-    /* code here */
+function removeArtist(arr, index) {
+    arr.splice(index, 1);
+    console.log(arr.length)
   }
   
- 
+ removeArtist(artists, 0)
 
 /**
 /* Task 6: Create a function called `addArtist` that can accept an object of information and add it to the artists array. Then, add a 21st artist to the array (you) with custom information!👩‍🎨👨‍🎨
@@ -288,11 +290,21 @@ bio: Add 1-2 sentences (or use lorem ipsum)
 
 At the end, this function should return the new array with information added"*/
 
-function addArtist(/* Code here */){
+function addArtist(arr, id, name, years, genre, nationality, bio){
 
-    /* Code here */
+  arr.push ({
+    id,
+    name,
+    years,
+    genre,
+    nationality,
+    bio
+  })
+  return (arr)
 
-  }
+}
+
+addArtist(artists, 20, 'Cory Perry', '1996 - 2100', 'minimalism', 'European, Mexican', 'Stuff about meeeeeeeeeeeeeeeeeeeeeeeee!!!!') 
 
 /* Task 7: Create a function called lotsOfArt() that takes one argument: 
 
@@ -302,13 +314,18 @@ and returns an array with names of artists who painted more than 100 paintings.
 
 For example lotsOfArt(artists); will return ["Amedeo Modigliani", "Rene Magritte", ..."Albrecht Dürer"]*/
 
-function lotsOfArt(/* Code here */){
-
-  /* Code here */
+function lotsOfArt(arr){
+  const lotsArray = []
+  for(let i = 0; i < arr.length; i++) {
+    if (arr[i].paintings > 100) {
+      lotsArray.push(arr[i].name)
+    }
+  }
+  return(lotsArray)
 
 }
 
-
+lotsOfArt(artists)
 
 // 🎨🎨 STRETCH 🎨🎨//
 
